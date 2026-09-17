@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: frontend-config
+  namespace: demo
+  labels:
+    app: frontend
+    app.kubernetes.io/part-of: demo-shop
+data:
+  ORDERS_URL: http://orders:3001
+  UPSTREAM_TIMEOUT_MS: "3000"
