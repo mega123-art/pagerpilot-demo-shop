@@ -71,7 +71,7 @@ app.post("/orders", async (req, res) => {
     return res.status(400).json({ error: "customer_id and total_cents must be integers" });
   }
   const r = await query(req, "insert_order",
-    "INSERT INTO orders (customer_id, status, total_cents) VALUES ($1, 'new', $2) RETURNING *",
+    "INSERT INTO orders (customer_id, status, total_cents, notes) VALUES ($1, 'new', $2, '') RETURNING *",
     [customer_id, total_cents]);
   res.status(201).json(r.rows[0]);
 });
